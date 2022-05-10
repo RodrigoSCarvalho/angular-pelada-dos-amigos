@@ -4,3 +4,19 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+table tr td, table tr th{
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+
+.table-wrap {
+    position: relative;
+}
+
+th, tr, td{
+    color: #fff;
+}
+
+
+/* tr:first-child{ border-bottom: 1px solid #fff !important;} */

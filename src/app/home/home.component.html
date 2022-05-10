@@ -18,6 +18,24 @@
             </div>
         </div>
     </section>
+    <section>
+        <div class="row display-flex mt-5">
+            <div class="table-wrap col-sm-4">
+            <table class="table table-borderless text-center" >
+                <thead>
+                  <tr>
+                    <th scope="col">Jogadores</th>   
+                  </tr>
+                </thead>
+                <tbody *ngFor="let jogador of jogadores"> 
+                  <tr>
+                    <td>{{jogador.nome}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+        </div>
+    </section>
     </div>
 </body>
 <app-footer></app-footer>
