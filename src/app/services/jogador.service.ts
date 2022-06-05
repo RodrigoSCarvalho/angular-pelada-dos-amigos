@@ -15,7 +15,7 @@ export class JogadorService {
     return this.httpClient.get<Jogador>(this.jogadoresUrl);
   }
 
-  postJogadores(jogador: Jogador): Observable<Jogador> {
+  postJogador(jogador: Jogador): Observable<Jogador> {
       return this.httpClient.post<Jogador>(this.jogadoresUrl, jogador).pipe(take(1));
   }
 }

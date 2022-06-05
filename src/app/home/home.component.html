@@ -5,36 +5,38 @@
     <div class="container blur">
         <section>
             <div class="row display-flex text-center mt-5 mb-4">
-                <span class="text-light display-6 ">Comece informando a lista de jogadores do dia</span>
+                <span class="text-light display-5 ">Comece informando a lista de jogadores do dia</span>
             </div>
         </section>
         <section>
         <div class="row">
             <div class="input-group input-group-lg mb-3 mx-5">
-                <input type="text" class="form-control" placeholder="Rodrigo" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-success" type="button" id="button-addon2">
+                <input type="text" class="form-control" placeholder="Ex: Rodrigo" aria-label="Recipient's username" #jogador aria-describedby="button-addon2" (keyup.enter)="onClick(jogador.value)">
+                <button class="btn btn-success" type="button" id="button-addon2" (click)="onClick(jogador.value)">
                     <i class='bx bx-check bx-sm' style='color:#ffffff' ></i>
                 </button>
             </div>
         </div>
     </section>
     <section>
-        <div class="row display-flex mt-5">
-            <div class="table-wrap col-sm-4">
-            <table class="table table-borderless text-center" >
-                <thead>
-                  <tr>
-                    <th scope="col">Jogadores</th>   
-                  </tr>
-                </thead>
-                <tbody *ngFor="let jogador of jogadores"> 
-                  <tr>
-                    <td>{{jogador.nome}}</td>
-                  </tr>
-                </tbody>
-              </table>
+      <div class="row display-flex text-center text-warning mt-3 mb-2">
+        <h1 *ngIf="players.length>0" class="display-6">Jogadores</h1>
+      </div>
+
+        <div class="row display-flex ">
+          <div class="col-3 grid" *ngFor="let jogador of players; let i = index">
+                  <div class="text-light " *ngIf="i<20">
+                      {{ jogador }}
+                  </div>
               </div>
-        </div>
+          </div>
+          <div class="row mt-3 justify-content-center" *ngIf="players.length>=10">
+              <div class="col-4 centralizar">
+              <button class="btn btn-warning rounded-pill" type="button" (click)="definirPotes()" >
+                  Definir os potes
+              </button>
+            </div>
+          </div>
     </section>
     </div>
 </body>

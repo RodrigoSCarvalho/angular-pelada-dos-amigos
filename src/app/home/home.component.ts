@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule  } from '@angular/forms';
 import { Jogador } from '../models/Jogador';
 import { JogadorService } from '../services/jogador.service';
 
@@ -9,10 +10,14 @@ import { JogadorService } from '../services/jogador.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _jogadorService: JogadorService) { }
+  constructor(private _jogadorService: JogadorService) {
+    
+   }
 
+  @ViewChild('jogador') inputJogador: any;
   jogadores: Jogador[] = [];
-
+  players: string[] = [];
+ 
   ngOnInit(): void {
     this.retrieveAllJogadores();
   }
@@ -26,6 +31,30 @@ export class HomeComponent implements OnInit {
     },}
 
     );
+  }
+
+  onClick(nome: string): void {
+    if("" == nome || nome == " "){
+      
+    }
+    else{
+      
+    if (this.players.length < 20){
+      this.players.push(nome);      
+    }
+    if(this.players.length == 20){
+      this.inputJogador.nativeElement.setAttribute('readonly', true,)
+      this.inputJogador.nativeElement.setAttribute('placeholder', "Todos os 20 jogadores foram inseridos!");
+    }
+    this.inputJogador.nativeElement.value = '';
+  }
+}
+
+  definirPotes(): void {
+    for (let jogador in this.players) {
+      this._jogadorService.postJogador({id: 0, nome: this.players[jogador]}).subscribe();
+      console.log(jogador)
+    }
   }
 
 }
