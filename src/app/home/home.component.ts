@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
    }
 
   @ViewChild('jogador') inputJogador: any;
+  @ViewChild('grid') divGrid: any;
   jogadores: Jogador[] = [];
   players: string[] = [];
  
@@ -55,6 +56,12 @@ export class HomeComponent implements OnInit {
       this._jogadorService.postJogador({id: 0, nome: this.players[jogador]}).subscribe();
       console.log(jogador)
     }
+  }
+
+  removeJogador(index: number) : void {
+    delete this.players[index];
+
+
   }
 
 }
