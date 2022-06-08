@@ -31,5 +31,8 @@ th, tr, td{
     color: #fff;
 }
 
+.icone:hover{
+    cursor: pointer; 
+}
 
 /* tr:first-child{ border-bottom: 1px solid #fff !important;} */

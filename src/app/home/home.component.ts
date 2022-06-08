@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('grid') divGrid: any;
   jogadores: Jogador[] = [];
   players: string[] = [];
+  isVisible: boolean = true;
  
   ngOnInit(): void {
     this.retrieveAllJogadores();
@@ -42,12 +43,14 @@ export class HomeComponent implements OnInit {
       
     if (this.players.length < 20){
       this.players.push(nome);      
+      
     }
     if(this.players.length == 20){
       this.inputJogador.nativeElement.setAttribute('readonly', true,)
       this.inputJogador.nativeElement.setAttribute('placeholder', "Todos os 20 jogadores foram inseridos!");
     }
     this.inputJogador.nativeElement.value = '';
+    
   }
 }
 
@@ -58,10 +61,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  removeJogador(index: number) : void {
-    delete this.players[index];
-
-
+  removeJogador(event: any, index: number): void {
+    (<HTMLInputElement>event.target)?.parentElement?.parentElement?.remove();
+    this.players.splice(index, 1);
+    console.log(this.players)
   }
 
 }
