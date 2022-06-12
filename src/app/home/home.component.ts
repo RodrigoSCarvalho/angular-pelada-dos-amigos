@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   isVisible: boolean = true;
   removidos: number[] = [];
   maxJog: number = 20;
+  contadorArray: number = 0;
 
   ngOnInit(): void {
     this.retrieveAllJogadores();
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
         );
       }
       this.inputJogador.nativeElement.value = '';
+      this.contadorArray ++;
     }
   }
 
@@ -67,11 +69,12 @@ export class HomeComponent implements OnInit {
     (<HTMLInputElement>event.target)?.parentElement?.parentElement?.remove();
 
     this.removidos.push(index);
-    //this.players.splice(index, 1);
-    this.maxJog + 1;
+    this.maxJog ++;
+    this.contadorArray --;
+    console.log(this.contadorArray);
 
     if (this.players.length >= this.maxJog - 1)
-      this.inputJogador.nativeElement.setAttribute('readonly', false);
+      this.inputJogador.nativeElement.removeAttribute('readonly', false);
     this.inputJogador.nativeElement.setAttribute('placeholder', 'Ex: Rodrigo');
   }
 }
