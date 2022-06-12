@@ -55,16 +55,13 @@ export class HomeComponent implements OnInit {
   definirPotes(): void {
     this.removidos.sort();
     for (let k = 0; k < this.removidos.length; k++) {
-      console.log('vou remover: ' + this.players[this.removidos[k]]);
       delete this.players[this.removidos[k]];
-      console.log(this.players);
     }
     for (let jogador in this.players) {
-      //this._jogadorService
-        // .postJogador({ id: 0, nome: this.players[jogador] })
-        // .subscribe();
-    }
-    console.log(this.players);
+      this._jogadorService
+        .postJogador({ id: 0, nome: this.players[jogador] })
+        .subscribe();
+    };
   }
 
   removeJogador(event: any, index: number): void {
@@ -74,7 +71,7 @@ export class HomeComponent implements OnInit {
     //this.players.splice(index, 1);
     this.maxJog + 1;
 
-    if (this.players.length >= this.maxJog -1 )
+    if (this.players.length >= this.maxJog - 1)
       this.inputJogador.nativeElement.setAttribute('readonly', false);
     this.inputJogador.nativeElement.setAttribute('placeholder', 'Ex: Rodrigo');
   }
