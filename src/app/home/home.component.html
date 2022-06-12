@@ -39,8 +39,8 @@
       </div>
 
       <div class="row display-flex">
-        <div class="col-3 grid divNomeJogador" id="divNomeJogador" *ngFor="let jogador of players; let i = index" >
-          <div class="text-light" *ngIf="i < 20" #grid >
+        <div class="col-3 grid divNomeJogador" id="divNomeJogador" *ngFor="let jogador of players; let i = index"  >
+          <div class="text-light">
             {{ jogador }}
             <i class="bx bx-x text-danger icone" (click)='removeJogador($event, i)'></i>
           </div>
