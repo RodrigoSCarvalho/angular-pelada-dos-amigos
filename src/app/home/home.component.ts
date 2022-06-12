@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit {
     } else {
       if (this.players.length < this.maxJog) {
         this.players.push(nome);
-        console.log(this.players.length);
       }
       if (this.players.length == this.maxJog) {
         this.inputJogador.nativeElement.setAttribute('readonly', true);
@@ -54,7 +53,7 @@ export class HomeComponent implements OnInit {
 
   definirPotes(): void {
     this.removidos.sort();
-    for (let k = 0; k < this.removidos.length; k++) {
+    for (let k in this.removidos){
       delete this.players[this.removidos[k]];
     }
     for (let jogador in this.players) {
